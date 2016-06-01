@@ -1,10 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Restaurants</h1>
+<h1 class = 'text-center'>Listing Restaurants</h1>
+<br>
 
-<table>
+<!-- <table>
   <thead>
     <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone_number</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <hr>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-4 col-sm-4">
+        <tbody>
+          <% @restaurants.each do |restaurant| %>
+            <tr>
+              <td><%= restaurant.name %></td>
+              <td><%= restaurant.address %></td>
+              <td><%= restaurant.phone_number %></td>
+              <td><%= restaurant.category %></td>
+              <td><%= link_to 'Show', restaurant %></td>
+              <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+              <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </div>
+    </div>
+  </div>
+</table> -->
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
       <th>Name</th>
       <th>Address</th>
       <th>Phone_number</th>
@@ -15,16 +50,17 @@
 
   <tbody>
     <% @restaurants.each do |restaurant| %>
-      <tr>
-        <td><%= restaurant.name %></td>
-        <td><%= restaurant.address %></td>
-        <td><%= restaurant.phone_number %></td>
-        <td><%= restaurant.category %></td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <tr>
+      <th scope="row"> <%= restaurant.id %></th>
+      <td><%= restaurant.name %></td>
+      <td><%= restaurant.address %></td>
+      <td><%= restaurant.phone_number %></td>
+      <td><%= restaurant.category %></td>
+      <td><%= link_to 'Show', restaurant %></td>
+      <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+      <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
   </tbody>
 </table>
 

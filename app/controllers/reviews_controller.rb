@@ -1,12 +1,13 @@
 class ReviewsController < ApplicationController
   before_action :find_restaurant, only: [ :new, :create ]
 
-  def show
-  end
-
-  def new
-    @review = Review.new
-  end
+  # def index
+  #   @reviews = Review.all
+  # end
+  #
+  # def new
+  #   @review = Review.new
+  # end
 
   def create
     @review = @restaurant.reviews.build(review_params)
