@@ -1,38 +1,53 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <p>
+        <h1> <%= @restaurant.name %> </h1>
+      </p>
+      <p>
+        <strong>Address:</strong>
+        <%= @restaurant.address %>
+      </p>
+      <p>
+        <strong>Phone_number:</strong>
+        <%= @restaurant.phone_number %>
+      </p>
+      <p>
+        <strong>Category:</strong>
+        <%= @restaurant.category %>
+      </p>
+      <p>
+        <strong>Reviews</strong>
+        <ul>
+        <% @restaurant.reviews.each do |review|  %>
+          <li> (<%=review.rating%>/5) <%=review.content%> </li>
+        <% end %>
+        </ul>
+      </p>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @restaurant.address %>
-</p>
-
-<p>
-  <strong>Phone_number:</strong>
-  <%= @restaurant.phone_number %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @restaurant.category %>
-</p>
-
-<p>
-  <strong>Reviews</strong>
-  <ul>
-  <% @restaurant.reviews.each do |review|  %>
-    <li> (<%=review.rating%>/5) <%=review.content%> </li>
-  <% end %>
-  </ul>
-</p>
-
-<%= render 'form_review' %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 bg-grey">
+      <%= render 'form_review' %>
+    </div>
+  </div>
+</div>
 
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %>
+
 <br>
+<br>
+<div id="hello">
+  <%= link_to 'Edit', edit_restaurant_path(@restaurant), {class: "btn btn-primary"} %>
+  <%= link_to 'Back', restaurants_path, {class: "btn btn-success"} %>
+</div>
 
-<%= link_to 'Back', restaurants_path %>
+<!--
+<div>
+  <%= link_to "Back", restaurants_path, {class: "btn btn-success center-block"} %>
+</div> -->
