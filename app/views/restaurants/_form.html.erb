@@ -5,7 +5,7 @@
     <%= f.input :name %>
     <%= f.input :address %>
     <%= f.input :phone_number %>
-    <%= f.input :category %>
+    <%= f.input :category, collection: ["chinese", "italian", "japanese", "french", "belgian"], prompt: "category" %>
   </div>
 
   <div class="form-actions">
