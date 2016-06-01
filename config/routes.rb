@@ -1,16 +1,27 @@
 Rails.application.routes.draw do
-  resources :restaurants
+  root 'restaurants#index'
+  resources :restaurants do
+    resources :reviews, only: [:new, :create]
+  end
 
-#   Running via Spring preloader in process 26362
-#          Prefix Verb   URI Pattern                     Controller#Action
-#     restaurants GET    /restaurants(.:format)          restaurants#index
-#                 POST   /restaurants(.:format)          restaurants#create
-#  new_restaurant GET    /restaurants/new(.:format)      restaurants#new
-# edit_restaurant GET    /restaurants/:id/edit(.:format) restaurants#edit
-#      restaurant GET    /restaurants/:id(.:format)      restaurants#show
-#                 PATCH  /restaurants/:id(.:format)      restaurants#update
-#                 PUT    /restaurants/:id(.:format)      restaurants#update
-#                 DELETE /restaurants/:id(.:format)      restaurants#destroy
+end
+
+# Running via Spring preloader in process 27586
+#                Prefix Verb   URI Pattern                                       Controller#Action
+#            review_new GET    /review/new(.:format)                             review#new
+#         review_create GET    /review/create(.:format)                          review#create
+#                  root GET    /                                                 restaurants#index
+#    restaurant_reviews POST   /restaurants/:restaurant_id/reviews(.:format)     reviews#create
+# new_restaurant_review GET    /restaurants/:restaurant_id/reviews/new(.:format) reviews#new
+#           restaurants GET    /restaurants(.:format)                            restaurants#index
+#                       POST   /restaurants(.:format)                            restaurants#create
+#        new_restaurant GET    /restaurants/new(.:format)                        restaurants#new
+#       edit_restaurant GET    /restaurants/:id/edit(.:format)                   restaurants#edit
+#            restaurant GET    /restaurants/:id(.:format)                        restaurants#show
+#                       PATCH  /restaurants/:id(.:format)                        restaurants#update
+#                       PUT    /restaurants/:id(.:format)                        restaurants#update
+#                       DELETE /restaurants/:id(.:format)                        restaurants#destroy
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -67,4 +78,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
